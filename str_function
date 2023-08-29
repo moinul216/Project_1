@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Student
+{
+    char Name[50];
+    int ID;
+    float CGPA;
+    char CourseRegistration[100][2];
+};
+
+struct Teacher
+{
+    char Name[50];
+    char designation[100];
+    int Number;
+};
+
+struct Course
+{
+    char Name[100];
+    char Code[100];
+};
+
+int main()
+{
+    int n;
+    struct Student Students[100];
+    struct Teacher Teachers[100];
+    struct Course Courses[100];
+    int i = 0;
+    while (n != 0)
+    {
+        printf("1. Add Student\n");
+        printf("2. Add Teacher\n");
+        printf("3. Add Course\n");
+        printf("4. Student registration\n");
+        scanf("%d", &n);
+        fflush(stdin);
+
+        if (n == 1)
+        {
+            printf("Enter student name: ");
+            gets(Students[i].Name);
+            printf("Enter student ID: ");
+            scanf("%d", &Students[i].ID);
+            printf("Enter student CGPA: ");
+            scanf("%f", &Students[i].CGPA);
+            printf("Student information saved...\n");
+            i++;
+        }
+
+        else if (n == 2)
+        {
+            printf("Enter teacher name: ");
+            gets(Teachers[i].Name);
+            fflush(stdin);
+            printf("Enter teacther designation: ");
+            gets(Teachers[i].designation);
+            printf("Enter teacher number: ");
+            scanf("%d", &Teachers[i].Number);
+            printf("Teacher information saved...\n");
+            i++;
+        }
+
+        else if (n == 3)
+        {
+            printf("Enter course name: ");
+            gets(Courses[i].Name);
+            fflush(stdin);
+            printf("Enter course code: ");
+            gets(Courses[i].Code);
+            printf("Course information saved...\n");
+            i++;
+        }
+
+        else if (n == 4)
+        {
+            int CheckId, count = 0;
+            char Course_Code[100];
+            printf("Enter ID: ");
+            scanf("%d", &CheckId);
+            for (int i = 0; Students[i].ID != '\0'; i++)
+            {
+                if (CheckId == Students[i].ID)
+                {
+                    printf("Student Name: %s\n", Students[i].Name);
+                    printf("Student Id: %d\n", Students[i].ID);
+                    printf("Select course code: ");
+                    fflush(stdin);
+                    gets(Course_Code);
+                    for (int j = 0; Courses[j].Code != '\0'; j++)
+                    {
+                        strcmp(Course_Code, Courses[j].Code);
+                        if (strcmp == 1)
+                        {
+                            count++;
+                            break;
+
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        else
+        {
+            printf("Error!\n");
+        }
+    }
+}
